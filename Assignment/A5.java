@@ -17,21 +17,33 @@ public class NthOddNumber {
 }
 
 //43
-import java.util.HashMap;
-import java.util.Map;
-
 public class Frequency {
     public static void main(String[] args) {
         int[] arr = {1, 2, 8, 3, 2, 2, 2, 5, 1};
-        Map<Integer, Integer> freq = new HashMap<>();
-
-        for (int num : arr) {
-            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        int n = arr.length;
+        int[] freq = new int[n];
+        boolean[] visited = new boolean[n];
+        for (int i = 0; i < n; i++) {
+            visited[i] = false;
         }
-
+        for (int i = 0; i < n; i++) {
+            if (visited[i]) {
+                continue;
+            }
+            int count = 1;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] == arr[j]) {
+                    visited[j] = true;
+                    count++;
+                }
+            }
+            freq[i] = count;
+        }
         System.out.println("Element | Frequency");
-        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
-            System.out.println(entry.getKey() + "       |     " + entry.getValue());
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                System.out.println(arr[i] + "       |     " + freq[i]);
+            }
         }
     }
 }
