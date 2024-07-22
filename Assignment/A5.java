@@ -17,32 +17,33 @@ public class NthOddNumber {
 }
 
 //43
-public class Frequency {
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 8, 3, 2, 2, 2, 5, 1};
-        int n = arr.length;
-        int[] freq = new int[n];
-        boolean[] visited = new boolean[n];
-        for (int i = 0; i < n; i++) {
-            visited[i] = false;
+public class frequency{
+    public static void main(String[]args){
+        int[] nums={1,1,2,3,4,3};
+        int n=nums.length;
+        int[] freq=new int[n];
+        boolean[] visited=new boolean[n];
+        int count=0;
+        for (int i=0;i<n;i++){
+            visited[i]=false;
         }
-        for (int i = 0; i < n; i++) {
-            if (visited[i]) {
+       count=1;
+        for(int i=0;i<n;i++){
+            if(visited[i]){
                 continue;
             }
-            int count = 1;
-            for (int j = i + 1; j < n; j++) {
-                if (arr[i] == arr[j]) {
-                    visited[j] = true;
+            for(int j=i+1;j<n;j++){
+                if(nums[i]==nums[j]){
+                    visited[j]=true;
                     count++;
                 }
             }
-            freq[i] = count;
+            freq[i]=count;
+            count=1;
         }
-        System.out.println("Element | Frequency");
-        for (int i = 0; i < n; i++) {
-            if (!visited[i]) {
-                System.out.println(arr[i] + "       |     " + freq[i]);
+        for(int i=0;i<n;i++){
+            if(!visited[i]){
+                 System.out.println(nums[i]+"    |    "+freq[i]);
             }
         }
     }
@@ -76,23 +77,15 @@ public class ArmstrongNumber {
 }
 
 //45
-public class SumOfDigits {
-    public static void main(String[] args) {
-        int number = 143;
-        System.out.println("Enter 3 digit number: " + number);
-        System.out.println("Sum of digits: " + sumOfDigits(number));
-    }
-
-    public static int sumOfDigits(int num) {
-        while (num > 9) {
-            int sum = 0;
-            while (num != 0) {
-                sum += num % 10;
-                num /= 10;
-            }
-            num = sum;
+public class digits{
+    public static void main(String[] args){
+        int num=123;
+        int sum=0;
+        while(num!=0){
+            sum+=num%10;
+            num/=10;
         }
-        return num;
+        System.out.print(sum);
     }
 }
 
@@ -206,13 +199,26 @@ public class DuplicateZeros {
 }
 
 //50
-public class MissingNumber {
-    public static void main(String[] args) {
-        int[] nums = {3, 0, 1};
-        System.out.println("Input: " + Arrays.toString(nums));
-        System.out.println("Output: " + findMissingNumber(nums));
+public class missing{
+    public static void main(String[] args){
+        int[] nums={3,0,1};
+        int t, n=nums.length;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if (nums[i]>nums[j]){
+                    t=nums[i];
+                    nums[i]=nums[j];
+                    nums[j]=t;
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(nums[i]!=i){
+                System.out.print(i+",");
+            }
+        }
     }
-
+}
     public static int findMissingNumber(int[] nums) {
         int n = nums.length;
         int total = n * (n + 1) / 2;
