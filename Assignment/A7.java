@@ -51,7 +51,6 @@ public class MaxMinSumDifference {
             return;
         }
 
-        // Manual sort
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - 1 - i; j++) {
                 if (array[j] > array[j + 1]) {
@@ -103,10 +102,8 @@ public class PalindromeStringCheck {
         String input = scanner.nextLine();
         boolean isPalindrome = true;
 
-        // Convert the input string to uppercase to make the check case-insensitive
         input = input.toUpperCase();
 
-        // Check if the string is a palindrome
         for (int i = 0; i < input.length() / 2; i++) {
             if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
                 isPalindrome = false;
@@ -132,7 +129,6 @@ public class DecimalConversion {
         System.out.println("Enter the decimal number:");
         int decimal = scanner.nextInt();
 
-        // Convert to binary
         String binary = "";
         int temp = decimal;
         if (temp == 0) {
@@ -144,7 +140,6 @@ public class DecimalConversion {
             }
         }
 
-        // Convert to octal
         String octal = "";
         temp = decimal;
         if (temp == 0) {
